@@ -1,0 +1,22 @@
+.left-bar {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 435px;
+    height: 460px;
+    display: flex;
+}
+.left-wrapper {
+    position: relative;
+    margin: 0 auto;
+    height: 460px;
+    width: 333px;
+}
+
+.right-bar {
+    position: absolute;
+    width: 589px;
+    height: 460px;
+    right: 0px;
+    bottom: 0px;
+}

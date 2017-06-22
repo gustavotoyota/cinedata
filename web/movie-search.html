@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="base.css">
+        <link rel="stylesheet" type="text/css" href="movie-search.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="window">
+                <div class="top-bar"><img class="logo" src="logo.png"/></div>
+                <div class="left-bar">
+                    <div class="left-wrapper">
+                        <div class="input-group">
+                            <label for="filme">Filme</label><br/>
+                            <div class="expander"><input id="filme" type="text"/></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="diretor">Diretor</label><br/>
+                            <div class="item-group">
+                                <input id="diretor" type="text"/>
+                                <input class="menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input class="mais" type="button" value="+"/>
+                                <span class="texto-mais">Adicionar mais um diretor à pesquisa</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="idioma">Idioma</label><br/>
+                            <div class="expander"><input id="idioma" type="text"/></div>
+                        </div>
+                        <div class="bottom-group">
+                            <input type="checkbox"/>
+                            <span class="texto-obed">A busca deve obedecer a todos os campos acima</span>
+                            <input class="pesquisar" type="button" value="Pesquisar"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-bar"></div>
+            </div>
+        </div>
+    </body>
+</html>

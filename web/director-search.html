@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="base.css">
+        <style>
+            .left-bar {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                width: 435px;
+                height: 460px;
+            }
+            .left-wrapper {
+                position: relative;
+                left: 60px;
+                height: 460px;
+                width: 333px;
+            }
+            .right-bar {
+                position: absolute;
+                width: 589px;
+                height: 460px;
+                right: 0px;
+                bottom: 0px;
+            }
+            .input-group {
+            }
+            label {
+                font-size: 34px;
+            }
+            .expander {
+                display: flex;
+            }
+            select, input[type="text"] {
+                height: 29px;
+                flex-grow: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="window">
+                <div class="top-bar"><img class="logo" src="logo.png"/></div>
+                <div class="left-bar">
+                    <div class="left-wrapper">
+                        <div class="input-group">
+                            <label for="numGeneros">Número de Gêneros</label><br/>
+                            <select>
+                                <option>Menor ou igual a</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-bar"></div>
+            </div>
+        </div>
+    </body>
+</html>
