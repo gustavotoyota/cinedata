@@ -1,0 +1,61 @@
+.left-bar {
+    position: relative;
+    
+    float: left;
+
+    width: 648px;
+    height: 460px;
+}
+.right-bar {
+    position: relative;
+    
+    margin-left: 672px;
+
+    width: 256px;
+    height: 460px;
+}
+.info {
+    margin-bottom: 5px;
+}
+.info-caption {
+    font-size: 13px;
+    font-weight: bold;
+    color: #b6b6b6;
+}
+.info-value {
+    font-size: 18px;
+    color: #636363;
+}
+.director-name {
+    font-size: 40px;
+    color: #636363;
+}
+.item {
+    display: flex;
+}
+.item-value {
+    margin-right: 12px;
+    
+    font-size: 18px;
+    color: #636363;
+}
+.item-desc {
+    flex: 1;
+    
+    font-size: 18px;
+    color: #adadad;
+}
+.retornar {
+    position: absolute;
+    
+    left: 0px;
+    bottom: 0px;
+    width: 256px;
+
+    padding: 5px 0px;
+    
+    color: white;
+    font-size: 20px;
+    border: 0px solid;
+    background-color: #6bce9d;
+}

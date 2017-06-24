@@ -1,22 +1,106 @@
 .left-bar {
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    width: 435px;
-    height: 460px;
-    display: flex;
-}
-.left-wrapper {
     position: relative;
-    margin: 0 auto;
-    height: 460px;
-    width: 333px;
-}
+    
+    float: left;
 
-.right-bar {
-    position: absolute;
-    width: 589px;
+    width: 338px;
     height: 460px;
+}
+.input-group {
+    margin-bottom: 11px;
+}
+label {
+    font-size: 34px;
+}
+select, input[type="text"] {
+    flex: auto;
+
+    height: 29px;
+    
+    font-size: 15px;
+}
+span {
+    color: #797979;
+    font-size: 13px;
+}
+.item-group {
+    margin-bottom: 5px;
+    
+    display: flex;
+    align-items: center;
+}
+.maismenos {
+    width: 23px;
+    height: 23px;
+    
+    color: white;
+    border: 0px solid;
+}
+.menos {
+    margin-left: 5px;
+
+    background-color: #ff3333;
+}
+.mais {
+    margin-right: 5px;
+    
+    background-color: #6bce9d;
+}
+.bottom-group {
+    position: absolute;
+    
+    left: 0px;
     right: 0px;
     bottom: 0px;
+}
+.submit {
+    padding: 3px 37px;
+    
+    color: white;
+    font-size: 26px;
+    border: 0px solid;
+    background-color: #6bce9d;
+}
+.right-bar {
+    margin-left: 362px;
+
+    width: 566px;
+    height: 460px;
+    
+    display: flex;
+    flex-direction: column;
+}
+.results {
+    flex: 1;
+    
+    overflow-y: scroll;
+}
+.director {
+    margin-bottom: 16px;
+    
+    display: flex;
+}
+.director-info {
+    flex: 1;
+    
+    margin-left: 8px;
+}
+.bold-info {
+    font-size: 13px;
+    font-weight: bold;
+}
+.normal-info {
+    font-size: 12px;
+}
+.pagination {
+    padding-top: 8px;
+}
+.page {
+    display: inline-block;
+    
+    padding: 0px 5px;
+    
+    color: white;
+    text-align: center;
+    background-color: #6bce9d;
 }

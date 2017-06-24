@@ -4,24 +4,26 @@
 }
 body {
     margin: 0px;
+    
     width: 100%;
     height: 100%;
 }
 .wrapper {
     width: 100%;
+    
     height: 100%;
     display: flex;
 }
 .window {
-    position: relative;
     margin: auto;
-    min-width: 1024px;
-    height: 615px;
+}
+.frame {
+    margin: 48px;
+
+    width: 928px;
 }
 .top-bar {
-    display: flex;
-    height: 155px;
-}
-.logo {
-    margin: auto;
+    height: 78px;
+    
+    text-align: center;
 }

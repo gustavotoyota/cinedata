@@ -6,36 +6,87 @@
     <body>
         <div class="wrapper">
             <div class="window">
-                <div class="top-bar"><img class="logo" src="img/logo.png"/></div>
-                <div class="left-bar">
-                    <div class="left-wrapper">
+                <div class="frame">
+                    <div class="top-bar"><img src="img/logo.png"/></div>
+                    <div class="left-bar">
                         <div class="input-group">
-                            <label for="filme">Filme</label><br/>
-                            <div class="expander"><input id="filme" type="text"/></div>
+                            <label>Filme</label><br/>
+                            <div class="grow"><input type="text"/></div>
                         </div>
                         <div class="input-group">
-                            <label for="diretor">Diretor</label><br/>
+                            <label>Diretor</label><br/>
                             <div class="item-group">
-                                <input id="diretor" type="text"/>
-                                <input class="menos" type="button" value="-"/>
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
                             </div>
                             <div class="item-group">
-                                <input class="mais" type="button" value="+"/>
-                                <span class="texto-mais">Adicionar mais um diretor à pesquisa</span>
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input class="maismenos mais" type="button" value="+"/>
+                                <span>Adicionar mais um diretor à pesquisa</span>
                             </div>
                         </div>
                         <div class="input-group">
-                            <label for="idioma">Idioma</label><br/>
-                            <div class="expander"><input id="idioma" type="text"/></div>
+                            <label>Idioma</label><br/>
+                            <div class="grow"><input type="text"/></div>
                         </div>
                         <div class="bottom-group">
-                            <input type="checkbox"/>
-                            <span class="texto-obed">A busca deve obedecer a todos os campos acima</span>
-                            <input class="pesquisar" type="button" value="Pesquisar"/>
+                            <input type="checkbox"/><span>A busca deve obedecer a todos os campos acima</span><br/>
+                            <input class="submit" type="button" value="Pesquisar"/>
+                        </div>
+                    </div>
+                    <div class="right-bar">
+                        <label>Resultados</label>
+                        <div class="results">
+                            <div class="movie">
+                                <div><img src="img/mini-movie.png"/></div>
+                                <div class="movie-info">
+                                    <span class="bold-info">Mulher Maravilha</span><br/>
+                                    <span class="normal-info">Patty Jenkins</span><br/>
+                                    <span class="normal-info">Inglês, Português</span>
+                                </div>
+                            </div>
+                            <div class="movie">
+                                <div><img src="img/mini-movie.png"/></div>
+                                <div class="movie-info">
+                                    <span class="bold-info">Mulher Maravilha</span><br/>
+                                    <span class="normal-info">Patty Jenkins</span><br/>
+                                    <span class="normal-info">Inglês, Português</span>
+                                </div>
+                            </div>
+                            <div class="movie">
+                                <div><img src="img/mini-movie.png"/></div>
+                                <div class="movie-info">
+                                    <span class="bold-info">Mulher Maravilha</span><br/>
+                                    <span class="normal-info">Patty Jenkins</span><br/>
+                                    <span class="normal-info">Inglês, Português</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <div class="page">1</div>
+                            <div class="page">2</div>
+                            <div class="page">3</div>
+                            <div class="page">4</div>
+                            <div class="page">5</div>
+                            <div class="page">6</div>
+                            <div class="page">7</div>
+                            <div class="page">8</div>
+                            <div class="page">9</div>
+                            <div class="page">10</div>
                         </div>
                     </div>
                 </div>
-                <div class="right-bar"></div>
             </div>
         </div>
     </body>

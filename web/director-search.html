@@ -1,56 +1,110 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="style/base.css">
-        <style>
-            .left-bar {
-                position: absolute;
-                left: 0px;
-                bottom: 0px;
-                width: 435px;
-                height: 460px;
-            }
-            .left-wrapper {
-                position: relative;
-                left: 60px;
-                height: 460px;
-                width: 333px;
-            }
-            .right-bar {
-                position: absolute;
-                width: 589px;
-                height: 460px;
-                right: 0px;
-                bottom: 0px;
-            }
-            .input-group {
-            }
-            label {
-                font-size: 34px;
-            }
-            .expander {
-                display: flex;
-            }
-            select, input[type="text"] {
-                height: 29px;
-                flex-grow: 1;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="style/director-search.css">
     </head>
     <body>
         <div class="wrapper">
             <div class="window">
-                <div class="top-bar"><img class="logo" src="img/logo.png"/></div>
-                <div class="left-bar">
-                    <div class="left-wrapper">
+                <div class="frame">
+                    <div class="top-bar"><img src="img/logo.png"/></div>
+                    <div class="left-bar">
                         <div class="input-group">
-                            <label for="numGeneros">Número de Gêneros</label><br/>
-                            <select>
-                                <option>Menor ou igual a</option>
-                            </select>
+                            <label>Número de Gêneros</label>
+                            <div style="display: flex">
+                                <select style="width: 140px">
+                                    <option>Menor que</option>
+                                    <option>Menor ou igual a</option>
+                                    <option>Igual a</option>
+                                    <option>Maior ou igual a</option>
+                                    <option>Maior que</option>
+                                </select>
+                                <input style="margin-left: 29px" type="text"/>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Gêneros</label>
+                            <span>Dentre os gêneros, devem constar:</span><br/>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input type="text"/>
+                                <input class="maismenos menos" type="button" value="-"/>
+                            </div>
+                            <div class="item-group">
+                                <input class="maismenos mais" type="button" value="+"/>
+                                <span>Adicionar mais um gênero na pesquisa</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Ordenação</label><br/>
+                            <input type="radio"/>
+                            <span style="font-size: 18px">Crescente</span><br/>
+                            <input type="radio"/>
+                            <span style="font-size: 18px">Decrescente</span><br/>
+                        </div>
+                        <div class="bottom-group">
+                            <input class="submit" type="button" value="Construir ranking"/>
+                        </div>
+                    </div>
+                    <div class="right-bar">
+                        <label>Resultados</label>
+                        <div class="results">
+                            <div class="director">
+                                <div><img src="img/mini-director.png"/></div>
+                                <div class="director-info">
+                                    <span class="bold-info">1</span><br/>
+                                    <span class="bold-info">James Gunn</span><br/>
+                                    <span class="normal-info">Num. Filmes: 12</span><br/>
+                                    <span class="normal-info">Num. Gêneros: 5</span><br/>
+                                    <span class="normal-info">Ação, Comédia, Musical, Terror, Aventura</span>
+                                </div>
+                            </div>
+                            <div class="director">
+                                <div><img src="img/mini-director.png"/></div>
+                                <div class="director-info">
+                                    <span class="bold-info">2</span><br/>
+                                    <span class="bold-info">James Gunn</span><br/>
+                                    <span class="normal-info">Num. Filmes: 12</span><br/>
+                                    <span class="normal-info">Num. Gêneros: 5</span><br/>
+                                    <span class="normal-info">Ação, Comédia, Musical, Terror, Aventura</span>
+                                </div>
+                            </div>
+                            <div class="director">
+                                <div><img src="img/mini-director.png"/></div>
+                                <div class="director-info">
+                                    <span class="bold-info">3</span><br/>
+                                    <span class="bold-info">James Gunn</span><br/>
+                                    <span class="normal-info">Num. Filmes: 12</span><br/>
+                                    <span class="normal-info">Num. Gêneros: 5</span><br/>
+                                    <span class="normal-info">Ação, Comédia, Musical, Terror, Aventura</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <div class="page">1</div>
+                            <div class="page">2</div>
+                            <div class="page">3</div>
+                            <div class="page">4</div>
+                            <div class="page">5</div>
+                            <div class="page">6</div>
+                            <div class="page">7</div>
+                            <div class="page">8</div>
+                            <div class="page">9</div>
+                            <div class="page">10</div>
                         </div>
                     </div>
                 </div>
-                <div class="right-bar"></div>
             </div>
         </div>
     </body>
