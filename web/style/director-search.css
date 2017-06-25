@@ -25,25 +25,30 @@ span {
 }
 .item-group {
     margin-bottom: 5px;
+
+    height: 29px;
     
     display: flex;
     align-items: center;
 }
-.maismenos {
+.del-btn {
+    margin-left: 5px;
+
     width: 23px;
     height: 23px;
     
     color: white;
     border: 0px solid;
-}
-.menos {
-    margin-left: 5px;
-
     background-color: #ff3333;
 }
-.mais {
+.add-btn {
     margin-right: 5px;
     
+    width: 23px;
+    height: 23px;
+    
+    color: white;
+    border: 0px solid;
     background-color: #6bce9d;
 }
 .bottom-group {
@@ -53,8 +58,8 @@ span {
     right: 0px;
     bottom: 0px;
 }
-.submit {
-    padding: 3px 37px;
+.search-btn {
+    padding: 0px 37px;
     
     color: white;
     font-size: 26px;
@@ -73,12 +78,26 @@ span {
 .results {
     flex: 1;
     
+    padding: 8px;
+    
     overflow-y: scroll;
+    
+    border: 1px solid #a9a9a9;
 }
 .director {
     margin-bottom: 16px;
     
     display: flex;
+}
+.director:last-of-type {
+    margin-bottom: 0px;
+}
+.director-img {
+    width: 54px;
+    height: 80px;
+    
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .director-info {
     flex: 1;
@@ -92,15 +111,19 @@ span {
 .normal-info {
     font-size: 12px;
 }
-.pagination {
-    padding-top: 8px;
+.pages {
+    padding-top: 4px;
 }
 .page {
-    display: inline-block;
+    margin-top: 4px;
     
-    padding: 0px 5px;
+    padding: 2px 6px;
     
     color: white;
     text-align: center;
     background-color: #6bce9d;
+    border: 0px solid;
+}
+.current-page {
+    background-color: #00994d;
 }

@@ -1,93 +1,68 @@
 <html>
     <head>
+        <title>CineData - Pesquisa de filmes</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <link rel="stylesheet" type="text/css" href="style/base.css">
         <link rel="stylesheet" type="text/css" href="style/movie-search.css">
+        
+        <script src="script/main.js"></script>
+        <script src="script/movie-search.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="wrapper">
             <div class="window">
                 <div class="frame">
-                    <div class="top-bar"><img src="img/logo.png"/></div>
-                    <div class="left-bar">
-                        <div class="input-group">
-                            <label>Filme</label><br/>
-                            <div class="grow"><input type="text"/></div>
-                        </div>
-                        <div class="input-group">
-                            <label>Diretor</label><br/>
-                            <div class="item-group">
-                                <input type="text"/>
-                                <input class="maismenos menos" type="button" value="-"/>
+                    <header class="top-bar"><img src="img/logo.png"/></header>
+                    <section class="left-bar">
+                        <form id="search-form" action="movie-ajax">
+                            <div class="input-group">
+                                <label for="title">Filme</label><br/>
+                                <div class="stretch"><input id="title" name="title" type="text"/></div>
                             </div>
-                            <div class="item-group">
-                                <input type="text"/>
-                                <input class="maismenos menos" type="button" value="-"/>
+                            <div class="input-group">
+                                <label>Diretor</label><br/>
+                                <div id="directors">
+                                    <div id="director1" class="item-group">
+                                        <input name="directors" type="text"/>
+                                        <input class="del-btn" type="button" value="-" style="display: none" onclick="delDirector(1)"/>
+                                    </div>
+                                </div>
+                                <div id="add-panel" class="item-group">
+                                    <input class="add-btn" type="button" value="+" onclick="addDirector()"/>
+                                    <span>Adicionar mais um diretor à pesquisa</span>
+                                </div>
                             </div>
-                            <div class="item-group">
-                                <input type="text"/>
-                                <input class="maismenos menos" type="button" value="-"/>
+                            <div class="input-group">
+                                <label for="language">Idioma</label><br/>
+                                <div class="stretch"><input id="language" name="language" type="text"/></div>
                             </div>
-                            <div class="item-group">
-                                <input type="text"/>
-                                <input class="maismenos menos" type="button" value="-"/>
+                            <div class="bottom-group">
+                                <input name="exact" type="checkbox" value="on"/><span>A busca deve obedecer a todos os campos acima</span><br/>
+                                <input class="search-btn" type="button" value="Pesquisar" onclick="searchMovies()"/>
                             </div>
-                            <div class="item-group">
-                                <input class="maismenos mais" type="button" value="+"/>
-                                <span>Adicionar mais um diretor à pesquisa</span>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label>Idioma</label><br/>
-                            <div class="grow"><input type="text"/></div>
-                        </div>
-                        <div class="bottom-group">
-                            <input type="checkbox"/><span>A busca deve obedecer a todos os campos acima</span><br/>
-                            <input class="submit" type="button" value="Pesquisar"/>
-                        </div>
-                    </div>
-                    <div class="right-bar">
+                        </form>
+                    </section>
+                    <section class="right-bar">
                         <label>Resultados</label>
-                        <div class="results">
-                            <div class="movie">
-                                <div><img src="img/mini-movie.png"/></div>
-                                <div class="movie-info">
-                                    <span class="bold-info">Mulher Maravilha</span><br/>
-                                    <span class="normal-info">Patty Jenkins</span><br/>
-                                    <span class="normal-info">Inglês, Português</span>
-                                </div>
-                            </div>
-                            <div class="movie">
-                                <div><img src="img/mini-movie.png"/></div>
-                                <div class="movie-info">
-                                    <span class="bold-info">Mulher Maravilha</span><br/>
-                                    <span class="normal-info">Patty Jenkins</span><br/>
-                                    <span class="normal-info">Inglês, Português</span>
-                                </div>
-                            </div>
-                            <div class="movie">
-                                <div><img src="img/mini-movie.png"/></div>
-                                <div class="movie-info">
-                                    <span class="bold-info">Mulher Maravilha</span><br/>
-                                    <span class="normal-info">Patty Jenkins</span><br/>
-                                    <span class="normal-info">Inglês, Português</span>
-                                </div>
-                            </div>
+                        <div id="results" class="results"></div>
+                        <div id="pages" class="pages">
+                            <input class="page" type="button" value="1"/>
                         </div>
-                        <div class="pagination">
-                            <div class="page">1</div>
-                            <div class="page">2</div>
-                            <div class="page">3</div>
-                            <div class="page">4</div>
-                            <div class="page">5</div>
-                            <div class="page">6</div>
-                            <div class="page">7</div>
-                            <div class="page">8</div>
-                            <div class="page">9</div>
-                            <div class="page">10</div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
+        
+        <script>
+            $(document).ready(function () {
+                if ($("#search-form input[type=text]").filter(function () {
+                    return $(this).val().length != 0;
+                }).length > 0)
+                    searchMovies();
+            });
+        </script>
     </body>
 </html>

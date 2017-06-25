@@ -6,14 +6,6 @@
     width: 648px;
     height: 460px;
 }
-.right-bar {
-    position: relative;
-    
-    margin-left: 672px;
-
-    width: 256px;
-    height: 460px;
-}
 .info {
     margin-bottom: 5px;
 }
@@ -45,13 +37,22 @@
     font-size: 18px;
     color: #adadad;
 }
-.retornar {
-    position: absolute;
-    
-    left: 0px;
-    bottom: 0px;
-    width: 256px;
+.right-bar {
+    margin-left: 672px;
 
+    width: 256px;
+    height: 460px;
+    
+    display: flex;
+    flex-direction: column;
+}
+.director-img {
+    flex: 1;
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.return {
     padding: 5px 0px;
     
     color: white;
