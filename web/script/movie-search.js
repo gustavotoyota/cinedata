@@ -1,6 +1,13 @@
 var nextDirector = 2;
 var searchParams = "";
 
+$(document).ready(function () {
+    if ($("#search-form input[type=text]").filter(function () {
+        return $(this).val().length != 0;
+    }).length > 0)
+        searchMovies();
+});
+
 window.onpopstate = function(event) {
     if (event.state) {
         $("#results").html(event.state.results);

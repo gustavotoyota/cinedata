@@ -7,8 +7,9 @@
         <link rel="stylesheet" type="text/css" href="style/base.css">
         <link rel="stylesheet" type="text/css" href="style/director-info.css">
         
-        <script src="script/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script/main.js"></script>
+        <script src="script/director-info.js"></script>
     </head>
     <body>
         <div class="wrapper">
@@ -63,13 +64,5 @@
                 </div>
             </div>
         </div>
-        
-        <script>
-            $(document).ready(function () {
-                getImage("James Gunn", true, 300, function (image) {
-                    $("#director-img").css("background-image", "url('" + image + "')");
-                });
-            });
-        </script>
     </body>
 </html>
