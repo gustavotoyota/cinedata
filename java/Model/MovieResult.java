@@ -1,3 +1,5 @@
+package Model;
+
 public class MovieResult {
     private int id;
     private String title;

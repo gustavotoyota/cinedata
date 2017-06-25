@@ -1,3 +1,5 @@
+package Model;
+
 public class DirectorResult {
     private int id;
     private String name;
