@@ -1,0 +1,77 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CineData - Detalhes do diretor</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+        <link rel="stylesheet" type="text/css" href="style/director-info.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script/main.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="window">
+                <div class="frame">
+                    <header class="top-bar"><img src="img/logo.png"/></header>
+                    <section class="left-bar" style="overflow: auto">
+                        <div class="info">
+                            <span class="info-caption">ID do Diretor</span><br/>
+                            <span class="info-value">0000001</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Nome do Diretor</span><br/>
+                            <span class="director-name">James Gunn</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Número de Gêneros</span><br/>
+                            <span class="info-value">5</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Filme(s)</span><br/>
+                            <span class="info-value">7</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Gêneros</span><br/>
+                            <div class="item">
+                                <div class="item-value">Ação</div>
+                                <div class="item-desc">4</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Comédia</div>
+                                <div class="item-desc">3</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Musical</div>
+                                <div class="item-desc">2</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Terror</div>
+                                <div class="item-desc">1</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Aventura</div>
+                                <div class="item-desc">1</div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="right-bar">
+                        <div id="director-img" class="director-img"></div>
+                        <input class="return" type="button" value="Retornar aos resultados" onclick="location.href=''"/>
+                    </section>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            $(document).ready(function () {
+                getImage("James Gunn", true, 300, function (image) {
+                    $("#director-img").css("background-image", "url('" + image + "')");
+                });
+            });
+        </script>
+    </body>
+</html>

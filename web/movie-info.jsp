@@ -1,0 +1,88 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CineData - Detalhes do filme</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" type="text/css" href="style/base.css">
+        <link rel="stylesheet" type="text/css" href="style/movie-info.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="script/main.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="window">
+                <div class="frame">
+                    <header class="top-bar"><img src="img/logo.png"/></header>
+                    <section class="left-bar" style="overflow: auto">
+                        <div class="info">
+                            <span class="info-caption">ID do filme</span><br/>
+                            <span class="info-value">0000001</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Título</span><br/>
+                            <span class="movie-title">Guardiões da Galáxia Vol. 2</span>
+                        </div>
+                        <div class="info" style="float: left; margin-right: 32px">
+                            <span class="info-caption">Ano</span><br/>
+                            <span class="info-value">2017</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Idioma(s)</span><br/>
+                            <span class="info-value">Inglês</span>
+                        </div>
+                        <div class="info" style="clear: both">
+                            <span class="info-caption">Gênero(s)</span><br/>
+                            <span class="info-value">Ação, Comédia</span>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Diretores</span><br/>
+                            <div class="item">
+                                <div class="item-value">James Gunn</div>
+                                <div class="item-desc">James Gunn é um escritor americano, cineasta, produtor, ator e músico</div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <span class="info-caption">Atores</span><br/>
+                            <div class="item">
+                                <div class="item-value">Chris Pratt</div>
+                                <div class="item-desc">Senhor das Estrelas/Peter Quill</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Vin Diesel</div>
+                                <div class="item-desc">Groot</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Zoe Saldaña</div>
+                                <div class="item-desc">Gamora</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Dave Baltista</div>
+                                <div class="item-desc">Drax</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-value">Karen Gillan</div>
+                                <div class="item-desc">Nebulosa</div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="right-bar">
+                        <div id="movie-img" class="movie-img"></div>
+                        <input class="return" type="button" value="Retornar aos resultados" onclick="location.href=''"/>
+                    </section>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            $(document).ready(function () {
+                getImage("Guardiões da Galáxia Vol. 2", false, 300, function (image) {
+                    $("#movie-img").css("background-image", "url('" + image + "')");
+                });
+            });
+        </script>
+    </body>
+</html>
