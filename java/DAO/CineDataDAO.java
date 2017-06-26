@@ -263,13 +263,7 @@ public class CineDataDAO {
             System.out.println(e);
         }
         
-        return null;
-        
-        /*String command = "SELECT dir_id, string_agg(gen_name, ', '), COUNT(gen_name), COUNT(*) OVER() as qt_gen FROM ("
-                + "SELECT dir_id, gen_name FROM moviedirector md JOIN ("
-                + "SELECT mov_id, gen_name FROM moviegenre mg JOIN ("
-                + "SELECT gen_id, gen_name FROM genre WHERE gen_name = ANY (" +  + "::VARCHAR[]))g ON mg.gen_id = g.gen_id)g ON md.mov_id = g.mov_id GROUP BY dir_id, gen_name;)mg GROUP BY dir_id HAVING COUNT(gen_name) > 0 ORDER BY qt_gen ASC dir_id "
-        + "LIMIT 10 OFFSET (" + Integer.toString(pageNumber) + "-1)*10;"*/
+        return null;                
     }
 
 }
