@@ -18,6 +18,13 @@
     font-size: 18px;
     color: #636363;
 }
+
+.movie-list {
+    font-size: 18px;
+    color: #6bce9d;
+    cursor: pointer;
+}
+
 .director-name {
     font-size: 40px;
     color: #636363;

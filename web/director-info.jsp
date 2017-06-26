@@ -29,7 +29,7 @@
                         </div>
                         <div class="info">
                             <span class="info-caption">Nome do Diretor</span><br/>
-                            <span class="director-name"><%= bean.getName()%></span>
+                            <span class="director-name" id="director_name"><%= bean.getName()%></span>
                         </div>
                         <div class="info">
                             <span class="info-caption">Número de Gêneros</span><br/>
@@ -38,6 +38,8 @@
                         <div class="info">
                             <span class="info-caption">Filme(s)</span><br/>
                             <span class="info-value"><%= bean.getNumMovies()%></span>
+                            <br>
+                            <span class="movie-list" id="movie_list"> Ver lista completa de filmes </span>
                         </div>
                         <div class="info">
                             <span class="info-caption">Gêneros</span><br/>
@@ -62,7 +64,9 @@
                 getImage("<%= bean.getName() %>", true, 300, function (image) {
                     $("#director-img").css("background-image", "url('" + image + "')");
                 });
-            });
+                var dir_url = "location.href='movie-search.jsp?title=&directors=" + escape(document.getElementById("director_name").innerText) + "&language=&page=1'";
+                $('#movie_list').attr("onclick",dir_url);
+            });                                              
         </script>
     </body>
 </html>
