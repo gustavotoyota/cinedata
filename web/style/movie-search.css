@@ -127,6 +127,8 @@ span {
 }
 .pages {
     padding-top: 4px;
+    
+    text-align: center;
 }
 .page {
     margin-top: 4px;

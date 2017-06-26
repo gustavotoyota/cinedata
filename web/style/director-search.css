@@ -12,7 +12,7 @@
 label {
     font-size: 34px;
 }
-select, input[type="text"] {
+select, input[type="text"], input[type="number"] {
     flex: auto;
 
     height: 29px;
@@ -85,7 +85,7 @@ span {
     border: 1px solid #a9a9a9;
 }
 .director {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     
     display: flex;
     
@@ -106,6 +106,8 @@ span {
     flex: 1;
     
     margin-left: 8px;
+    
+    color: #797979;
 }
 .bold-info {
     font-size: 13px;
@@ -116,6 +118,8 @@ span {
 }
 .pages {
     padding-top: 4px;
+    
+    text-align: center;
 }
 .page {
     margin-top: 4px;

@@ -14,6 +14,10 @@ function getImage(text, person, size, callback) {
                 return;
 
             var file = data.results[0].poster_path || data.results[0].profile_path;
+            
+            if (file == null)
+                return;
+            
             callback("https://image.tmdb.org/t/p/w" + size + file);
         }
     );

@@ -3,10 +3,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%!
-public String getParam(HttpServletRequest request, String name) {
+public String getParam(HttpServletRequest request, String name, String defValue) {
     String param = request.getParameter(name);
     if (param == null)
-        return "";
+        return defValue;
     return param;
 } 
 %>
@@ -34,7 +34,7 @@ public String getParam(HttpServletRequest request, String name) {
                         <form id="search-form" action="movie-ajax">
                             <div class="input-group">
                                 <label for="title">Filme</label><br/>
-                                <div class="stretch"><input id="title" name="title" type="text" value="<%= getParam(request, "title") %>"/></div>
+                                <div class="stretch"><input id="title" name="title" type="text"/></div>
                             </div>
                             <div class="input-group">
                                 <label>Diretor</label><br/>
@@ -51,11 +51,11 @@ public String getParam(HttpServletRequest request, String name) {
                             </div>
                             <div class="input-group">
                                 <label for="language">Idioma</label><br/>
-                                <div class="stretch"><input id="language" name="language" type="text" value="<%= getParam(request, "language") %>"/></div>
+                                <div class="stretch"><input id="language" name="language" type="text"/></div>
                             </div>
                             <div class="bottom-group">
                                 <input name="exact" type="checkbox" value="on"/><span>A busca deve obedecer a todos os campos acima</span><br/>
-                                <input class="search-btn" type="button" value="Pesquisar" onclick="searchMovies()"/>
+                                <input class="search-btn" type="button" value="Pesquisar" onclick="searchStart()"/>
                             </div>
                         </form>
                     </section>
@@ -71,15 +71,26 @@ public String getParam(HttpServletRequest request, String name) {
         </div>
                             
         <script>
+            $("[name=title]").val("<%= getParam(request, "title", "") %>");
+            
             <% String[] directors = request.getParameterValues("directors"); %>
             <% if (directors != null) { %>
                 <% for (int i = 0; i < directors.length; ++i) { %>
                     <% if (i != 0) { %>
                         addDirector();
                     <% } %>
-                    $("[name=director]:last").val("<%= directors[i] %>");
+                    $("[name=directors]:last").val("<%= directors[i] %>");
                 <% } %>
             <% } %>
+                
+            $("[name=language]").val("<%= getParam(request, "language", "") %>");
+            
+            $("[name=exact]").prop("checked", "<%= getParam(request, "exact", "") %>" === "on");
+            
+            if ($("#search-form input[type=text]").filter(function () {
+                return $(this).val().length !== 0;
+            }).length > 0)
+                searchPage("<%= getParam(request, "page", "1") %>");
         </script>
     </body>
 </html>

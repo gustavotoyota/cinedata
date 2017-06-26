@@ -1,4 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%!
+public String getParam(HttpServletRequest request, String name, String defValue) {
+    String param = request.getParameter(name);
+    if (param == null)
+        return defValue;
+    return param;
+} 
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,25 +59,49 @@
                             </div>
                             <div class="input-group">
                                 <label>Ordenação</label><br/>
-                                <input name="order" type="radio" value="asc" checked/>
+                                <input name="order" type="radio" value="asc"/>
                                 <span style="font-size: 18px">Crescente</span><br/>
                                 <input name="order" type="radio" value="desc"/>
                                 <span style="font-size: 18px">Decrescente</span><br/>
                             </div>
                             <div class="bottom-group">
-                                <input class="search-btn" type="button" value="Construir ranking" onclick="searchDirectors()"/>
+                                <input class="search-btn" type="button" value="Construir ranking" onclick="searchStart()"/>
                             </div>
+                            <input type="hidden" name="page" value="1"/>
                         </form>
                     </section>
                     <section class="right-bar">
                         <label>Resultados</label>
                         <div id="results" class="results"></div>
                         <div id="pages" class="pages">
-                            <input class="page" type="button" value="1" onclick="openPage(1)"/>
+                            <input class="page" type="button" value="1"/>
                         </div>
                     </section>
                 </div>
             </div>
         </div>
+                            
+        <script>
+            $("[name=compop]").val("<%= getParam(request, "compop", "<") %>");
+            
+            $("[name=compqt]").val("<%= getParam(request, "compqt", "") %>");
+            
+            <% String[] genres = request.getParameterValues("genres"); %>
+            <% if (genres != null) { %>
+                <% for (int i = 0; i < genres.length; ++i) { %>
+                    <% if (i != 0) { %>
+                        addGenre();
+                    <% } %>
+                    $("[name=genres]:last").val("<%= genres[i] %>");
+                <% } %>
+            <% } %>
+                
+            $("[name=order][value=<%= getParam(request, "order", "asc") %>]").prop("checked", true);
+
+            if ($("#search-form input[type=text]").filter(function () {
+                return $(this).val().length !== 0;
+            }).length > 0)
+                searchPage("<%= getParam(request, "page", "1") %>");
+        </script>
     </body>
 </html>

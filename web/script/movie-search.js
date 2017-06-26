@@ -1,13 +1,6 @@
 var nextDirector = 2;
 var searchParams = "";
 
-$(document).ready(function () {
-    if ($("#search-form input[type=text]").filter(function () {
-        return $(this).val().length != 0;
-    }).length > 0)
-        searchMovies();
-});
-
 window.onpopstate = function(event) {
     if (event.state) {
         $("#results").html(event.state.results);
@@ -16,20 +9,20 @@ window.onpopstate = function(event) {
 };
 
 function delDirector(id) {
-    if ($("[name=directors]").length == 5)
+    if ($("[name=directors]").length === 5)
         $("#add-panel").css("display", "flex");
 
     $("#director" + id).remove();
     
-    if ($("[name=directors]").length == 1)
+    if ($("[name=directors]").length === 1)
         $(".del-btn").css("display", "none");
 }
 
 function addDirector() {
-    if ($("[name=directors]").length == 5)
+    if ($("[name=directors]").length === 5)
         return;
 
-    if ($("[name=directors]").length == 1)
+    if ($("[name=directors]").length === 1)
         $(".del-btn").css("display", "block");
     
     $("#directors").append(
@@ -39,7 +32,7 @@ function addDirector() {
         "</div>"
     );
     
-    if ($("[name=directors]").length == 5)
+    if ($("[name=directors]").length === 5)
         $("#add-panel").css("display", "none");
 }
 
@@ -58,7 +51,7 @@ function addMovie(movie) {
     var movieImg = $(".movie-img:last");
         
     getImage(movie.title, false, 92, function (image) {
-        movieImg.css("background-image", "url('" + image + "')")
+        movieImg.css("background-image", "url('" + image + "')");
     });
 }
 
@@ -75,20 +68,18 @@ function createPages(numPages, pageIndex) {
     var begin = Math.max(1, pageIndex - 4 + Math.min(0, numPages - pageIndex - 5));
     var end = Math.min(numPages, pageIndex + 4 + Math.max(0, 5 - pageIndex));            
     
-    if (pageIndex > 5)
-        $("#pages").append(
-            "<input class='page' type='button' value='...' onclick='openPage(" + (begin - 1) + ")'/> "
-        );
+    if (begin > 1)
+        $("#pages").append("<input class='page' type='button' value='1' onclick='openPage(1)'/> ");
+    if (begin > 2)
+        $("#pages").append("<input class='page' type='button' value='...' onclick='openPage(" + (begin - 1) + ")'/> ");
     
     for (var i = begin; i <= end; ++i)
-        $("#pages").append(
-            "<input class='page" + (i == pageIndex ? " current-page" : "") + "' type='button' value='" + i + "' onclick='openPage(" + i + ")'/> "
-        );
+        $("#pages").append("<input class='page" + (i === pageIndex ? " current-page" : "") + "' type='button' value='" + i + "' onclick='openPage(" + i + ")'/> ");
 
-    if (pageIndex < numPages - 4)
-        $("#pages").append(
-            "<input class='page' type='button' value='...' onclick='openPage(" + (end + 1) + ")'/> "
-        );
+    if (end < numPages - 1)
+        $("#pages").append("<input class='page' type='button' value='...' onclick='openPage(" + (end + 1) + ")'/> ");
+    if (end < numPages)
+        $("#pages").append("<input class='page' type='button' value='" + numPages + "' onclick='openPage(" + numPages + ")'/> ");
 }
 
 function openPage(index) {
@@ -98,21 +89,31 @@ function openPage(index) {
         searchParams = searchParams.substr(0, searchParams.lastIndexOf("=") + 1);
     searchParams += index;
     
-    $.getJSON(
-        $("#search-form").attr("action"),
-        searchParams,
-        function (data) {
+    $.ajax({
+        dataType: 'json',
+        data: searchParams,
+        type: 'post',
+        url: $("#search-form").attr("action"),
+        success: function (data) {
             $("#results").html("");
             for (var i in data.movies)
                 addMovie(data.movies[i]);
             createPages(data.numPages, data.pageIndex);
-        }
-    );
     
-    window.history.pushState({"results": $("#results").html(), "pages": $("#pages").html()}, "", window.location.href.split('?')[0] + "?" + searchParams);
+            window.history.pushState({
+                "results": $("#results").html(),
+                "pages": $("#pages").html()},
+                "", window.location.href.split('?')[0] + "?" + searchParams
+            );
+        }
+    });
 }
 
-function searchMovies() {
+function searchPage(page) {
     searchParams = $("#search-form").serialize();
-    openPage(1);
+    openPage(page);
+}
+
+function searchStart() {
+    searchPage(1);
 }
