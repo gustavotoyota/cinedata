@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>MovieAjax</servlet-name>
+        <servlet-class>Controller.MovieAjax</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MovieInfo</servlet-name>
+        <servlet-class>Controller.MovieInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DirectorAjax</servlet-name>
+        <servlet-class>Controller.DirectorAjax</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DirectorInfo</servlet-name>
+        <servlet-class>Controller.DirectorInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MovieAjax</servlet-name>
+        <url-pattern>/movie-ajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MovieInfo</servlet-name>
+        <url-pattern>/movie-info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DirectorAjax</servlet-name>
+        <url-pattern>/director-ajax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DirectorInfo</servlet-name>
+        <url-pattern>/director-info</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

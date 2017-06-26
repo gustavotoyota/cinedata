@@ -88,15 +88,19 @@ span {
     overflow-y: scroll;
     
     border: 1px solid #a9a9a9;
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 .movie {
-    float: left;
-    
     margin-bottom: 16px;
     
     width: 50%;
     
     display: flex;
+    
+    cursor: pointer;
 }
 .movie:last-of-type {
     margin-bottom: 0px;
@@ -107,6 +111,7 @@ span {
     
     background-size: contain;
     background-repeat: no-repeat;
+    background-image: url("/CineData/img/default-movie.png");
 }
 .movie-info {
     flex: 1;

@@ -17,25 +17,25 @@
         <div class="wrapper">
             <div class="window">
                 <div class="frame">
-                    <header class="top-bar"><img src="img/logo.png"/></header>
+                    <header class="top-bar" onclick="location.href='index.jsp'"><img src="img/logo.png"/></header>
                     <section class="left-bar">
                         <form id="search-form" action="director-ajax">
                             <div class="input-group">
                                 <label>Número de Gêneros</label>
                                 <div style="display: flex">
-                                    <select style="width: 140px">
-                                        <option>Menor que</option>
-                                        <option>Menor ou igual a</option>
-                                        <option>Igual a</option>
-                                        <option>Maior ou igual a</option>
-                                        <option>Maior que</option>
+                                    <select name="compop" style="width: 140px">
+                                        <option value="<">Menor que</option>
+                                        <option value="<=">Menor ou igual a</option>
+                                        <option value="=">Igual a</option>
+                                        <option value=">=">Maior ou igual a</option>
+                                        <option value=">">Maior que</option>
                                     </select>
-                                    <input style="margin-left: 29px" type="text"/>
+                                    <input name="compqt" style="margin-left: 29px" type="text"/>
                                 </div>
                             </div>
                             <div class="input-group">
                                 <label>Gêneros</label>
-                                <span>Dentre os gêner, devem constar:</span><br/>
+                                <span>Dentre os gêneros, devem constar:</span><br/>
                                 <div id="genres">
                                     <div id="genre1" class="item-group">
                                         <input name="genres" type="text"/>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div id="add-panel" class="item-group">
                                     <input class="add-btn" type="button" value="+" onclick="addGenre()"/>
-                                    <span>Adicionar mais um gêner na pesquisa</span>
+                                    <span>Adicionar mais um gênero na pesquisa</span>
                                 </div>
                             </div>
                             <div class="input-group">

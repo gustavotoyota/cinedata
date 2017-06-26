@@ -1,4 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="Model.MovieInfoBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% MovieInfoBean bean = (MovieInfoBean)request.getAttribute("bean"); %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,62 +21,50 @@
         <div class="wrapper">
             <div class="window">
                 <div class="frame">
-                    <header class="top-bar"><img src="img/logo.png"/></header>
+                    <header class="top-bar" onclick="location.href='index.jsp'"><img src="img/logo.png"/></header>
                     <section class="left-bar" style="overflow: auto">
                         <div class="info">
                             <span class="info-caption">ID do filme</span><br/>
-                            <span class="info-value">0000001</span>
+                            <span class="info-value"><%= bean.getId() %></span>
                         </div>
                         <div class="info">
                             <span class="info-caption">Título</span><br/>
-                            <span class="movie-title">Guardiões da Galáxia Vol. 2</span>
+                            <span class="movie-title"><%= bean.getTitle()%></span>
                         </div>
                         <div class="info" style="float: left; margin-right: 32px">
                             <span class="info-caption">Ano</span><br/>
-                            <span class="info-value">2017</span>
+                            <span class="info-value"><%= bean.getYear()%></span>
                         </div>
                         <div class="info">
                             <span class="info-caption">Idioma(s)</span><br/>
-                            <span class="info-value">Inglês</span>
+                            <span class="info-value"><%= bean.getLanguages()%></span>
                         </div>
                         <div class="info" style="clear: both">
                             <span class="info-caption">Gênero(s)</span><br/>
-                            <span class="info-value">Ação, Comédia</span>
+                            <span class="info-value"><%= bean.getGenres()%></span>
                         </div>
                         <div class="info">
                             <span class="info-caption">Diretores</span><br/>
+                            <% for (int i = 0; i < bean.getDirectorNames().size(); ++i) { %>
                             <div class="item">
-                                <div class="item-value">James Gunn</div>
-                                <div class="item-desc">James Gunn é um escritor americano, cineasta, produtor, ator e músico</div>
+                                <div class="item-value"><%= bean.getDirectorNames().get(i) %></div>
+                                <div class="item-desc"><%= bean.getDirectorDescs().get(i) %></div>
                             </div>
+                            <% } %>
                         </div>
                         <div class="info">
                             <span class="info-caption">Atores</span><br/>
-                            <div class="item">
-                                <div class="item-value">Chris Pratt</div>
-                                <div class="item-desc">Senhor das Estrelas/Peter Quill</div>
-                            </div>
-                            <div class="item">
-                                <div class="item-value">Vin Diesel</div>
-                                <div class="item-desc">Groot</div>
-                            </div>
-                            <div class="item">
-                                <div class="item-value">Zoe Saldaña</div>
-                                <div class="item-desc">Gamora</div>
-                            </div>
-                            <div class="item">
-                                <div class="item-value">Dave Baltista</div>
-                                <div class="item-desc">Drax</div>
-                            </div>
-                            <div class="item">
-                                <div class="item-value">Karen Gillan</div>
-                                <div class="item-desc">Nebulosa</div>
-                            </div>
+                            <% for (int i = 0; i < bean.getActorNames().size(); ++i) { %>
+                            <div class="item">                                                                
+                                <div class="item-value"><%= bean.getActorNames().get(i) %></div>
+                                <div class="item-desc"><%= bean.getActorDescs().get(i) %></div>
+                            </div>                            
+                            <% } %>
                         </div>
                     </section>
                     <section class="right-bar">
                         <div id="movie-img" class="movie-img"></div>
-                        <input class="return" type="button" value="Retornar aos resultados" onclick="location.href=''"/>
+                        <input class="return" type="button" value="Retornar aos resultados" onclick="window.history.back()"/>
                     </section>
                 </div>
             </div>
@@ -79,7 +72,7 @@
     
         <script>
             $(document).ready(function () {
-                getImage("Guardiões da Galáxia Vol. 2", false, 300, function (image) {
+                getImage("<%= bean.getTitle() %>", false, 300, function (image) {
                     $("#movie-img").css("background-image", "url('" + image + "')");
                 });
             });

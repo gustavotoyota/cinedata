@@ -88,6 +88,8 @@ span {
     margin-bottom: 16px;
     
     display: flex;
+    
+    cursor: pointer;
 }
 .director:last-of-type {
     margin-bottom: 0px;
@@ -98,6 +100,7 @@ span {
     
     background-size: contain;
     background-repeat: no-repeat;
+    background-image: url("/CineData/img/default-director.png");
 }
 .director-info {
     flex: 1;

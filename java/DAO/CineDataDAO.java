@@ -6,16 +6,23 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class CineDataDAO {
-    private Connection conn;
+    private static Connection conn = null;
     
-    public CineDataDAO() {
+    public static void initConnection() {
+        if (conn != null)
+            return;
+        
         try{
             Class.forName("org.postgresql.Driver").newInstance();
             
             conn = DriverManager.getConnection("jdbc:postgresql:" +
-                    "//localhost/movie?user=postgres&password=123");
+                        "//localhost/CineData?user=postgres&password=123");                        
         } catch (Exception e){
-        }
+        }                
+    }        
+    
+    public CineDataDAO() {
+        initConnection();
     }
     
     public MovieInfoBean getMovieInfo(MovieInfoBean movie) {
@@ -44,7 +51,7 @@ public class CineDataDAO {
             // Select movie genre
             command = "SELECT COALESCE(string_agg(gen_name, ', '),'') AS genres "
                     + "FROM genre g JOIN moviegenre mg ON g.gen_id = mg.gen_id "
-                    + "WHERE mg.gen_id = " + id;
+                    + "WHERE mg.mov_id = " + id;
             rs = stmt.executeQuery(command);
             if (rs.next())
                 movie.setGenres(rs.getString(1));
@@ -151,7 +158,7 @@ public class CineDataDAO {
                 if (o instanceof ResultSet) {
                     ResultSet cursorResult = (ResultSet)o;
                     if (cursorResult.next())
-                        totalPages = (int)Math.ceil(cursorResult.getInt(1)/10);                    
+                        totalPages = (int)Math.ceil(cursorResult.getInt(1)/10.0);                    
                 }
             }     
             
@@ -189,9 +196,10 @@ public class CineDataDAO {
             
             movies.setNumPages(totalPages);
             movies.setPageIndex(pageIndex);
-            movies.setResults(moviesList);
+            movies.setMovies(moviesList);
             return movies;
-        } catch (Exception e) {             
+        } catch (Exception e) {       
+            System.out.println(e);
         }
         
         return null;
@@ -231,8 +239,9 @@ public class CineDataDAO {
             
             // Save results
             directors.setPageIndex(pageIndex);
-            while(rs.next()) {                
-                directorsList.add(new DirectorResult(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+            int rank = (pageIndex-1)*10;
+            while(rs.next()) {                         
+                directorsList.add(new DirectorResult(rs.getInt(1), ++rank, rs.getString(2), rs.getInt(3)));
                 directors.setNumPages((int)Math.ceil(rs.getInt(4)/10.0)); 
             }
             
@@ -248,7 +257,7 @@ public class CineDataDAO {
                 }
             }
             
-            directors.setResults(directorsList);
+            directors.setDirectors(directorsList);
             return directors;
         } catch (Exception e) {
             System.out.println(e);

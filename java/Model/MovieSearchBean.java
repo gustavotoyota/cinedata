@@ -5,7 +5,7 @@ import java.util.List;
 public class MovieSearchBean {
     private int numPages;
     private int pageIndex;
-    private List<MovieResult> results;       
+    private List<MovieResult> movies;       
 
     public int getNumPages() {
         return numPages;
@@ -23,12 +23,12 @@ public class MovieSearchBean {
         this.pageIndex = currentPage;
     }
 
-    public List<MovieResult> getResults() {
-        return results;
+    public List<MovieResult> getMovies() {
+        return movies;
     }
 
-    public void setResults(List<MovieResult> movies) {
-        this.results = movies;
+    public void setMovies(List<MovieResult> movies) {
+        this.movies = movies;
     }
 
     

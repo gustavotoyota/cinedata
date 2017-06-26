@@ -45,7 +45,7 @@ function addDirector() {
 
 function addMovie(movie) {
     $("#results").append(
-        "<div class='movie'>" +
+        "<div class='movie' onclick='location.href=\"movie-info?id=" + movie.id + "\"'>" +
             "<div class='movie-img'></div>" +
             "<div class='movie-info'>" +
                 "<span class='bold-info'>" + movie.title + "</span><br/>" +
@@ -56,7 +56,7 @@ function addMovie(movie) {
     );
     
     var movieImg = $(".movie-img:last");
-    
+        
     getImage(movie.title, false, 92, function (image) {
         movieImg.css("background-image", "url('" + image + "')")
     });
@@ -64,25 +64,52 @@ function addMovie(movie) {
 
 function createPages(numPages, pageIndex) {
     $("#pages").html("");
-    for (var i = 1; i <= numPages; ++i)
+    
+    if (numPages === 0) {
+        $("#pages").append(
+            "<input class='page' type='button' value='1'/> "
+        );
+        return;
+    }
+        
+    var begin = Math.max(1, pageIndex - 4 + Math.min(0, numPages - pageIndex - 5));
+    var end = Math.min(numPages, pageIndex + 4 + Math.max(0, 5 - pageIndex));            
+    
+    if (pageIndex > 5)
+        $("#pages").append(
+            "<input class='page' type='button' value='...' onclick='openPage(" + (begin - 1) + ")'/> "
+        );
+    
+    for (var i = begin; i <= end; ++i)
         $("#pages").append(
             "<input class='page" + (i == pageIndex ? " current-page" : "") + "' type='button' value='" + i + "' onclick='openPage(" + i + ")'/> "
+        );
+
+    if (pageIndex < numPages - 4)
+        $("#pages").append(
+            "<input class='page' type='button' value='...' onclick='openPage(" + (end + 1) + ")'/> "
         );
 }
 
 function openPage(index) {
+    if (searchParams.indexOf("page") < 0)
+        searchParams += "&page=";
+    else
+        searchParams = searchParams.substr(0, searchParams.lastIndexOf("=") + 1);
+    searchParams += index;
+    
     $.getJSON(
         $("#search-form").attr("action"),
         searchParams,
         function (data) {
             $("#results").html("");
-            for (var movie in data.movies)
-                addMovie(movie);
+            for (var i in data.movies)
+                addMovie(data.movies[i]);
             createPages(data.numPages, data.pageIndex);
         }
     );
     
-    window.history.pushState({"results": $("#results").html(), "pages": $("#pages").html()}, "", window.location.href.split('?')[0] + searchParams);
+    window.history.pushState({"results": $("#results").html(), "pages": $("#pages").html()}, "", window.location.href.split('?')[0] + "?" + searchParams);
 }
 
 function searchMovies() {

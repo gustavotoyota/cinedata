@@ -5,7 +5,7 @@ import java.util.List;
 public class DirectorSearchBean {    
     private int numPages;
     private int pageIndex;
-    private List<DirectorResult> results;
+    private List<DirectorResult> directors;
   
     public int getNumPages() {
         return numPages;
@@ -23,12 +23,12 @@ public class DirectorSearchBean {
         this.pageIndex = pageIndex;
     }
 
-    public List<DirectorResult> getResults() {
-        return results;
+    public List<DirectorResult> getDirectors() {
+        return directors;
     }
 
-    public void setResults(List<DirectorResult> results) {
-        this.results = results;
+    public void setDirectors(List<DirectorResult> directors) {
+        this.directors = directors;
     }
     
     

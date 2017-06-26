@@ -1,18 +1,28 @@
 package Model;
 
 public class DirectorResult {
+    private int rank;
     private int id;
     private String name;
     private int numMovies;
     private int numGenres;
     private String genres;
-
-    public DirectorResult(int id, String genres, int numGenres) {
+    
+    public DirectorResult(int id, int rank, String genres, int numGenres) {
         this.id = id;
+        this.rank = rank;
         this.name = "";      
         this.numMovies = 0;
         this.numGenres = numGenres;
         this.genres = genres;
+    }
+    
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
     
     public int getId() {

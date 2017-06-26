@@ -24,4 +24,6 @@ body {
     height: 78px;
     
     text-align: center;
+    
+    cursor: pointer;
 }

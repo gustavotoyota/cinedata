@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+}
+body {
+    margin: 0px;
+    
+    height: 100vh;
+}
+.wrapper {
+    height: 100%;
+    
+    display: flex;
+}
+.window {
+    margin: auto;
+}
+.frame {
+    margin: 48px;
+
+    width: 928px;
+}
+.top-bar {
+    height: 78px;
+    
+    text-align: center;
+}
+.bottom-bar {
+    width: 928px;
+    height: 460px;
+    
+    display: flex;
+    align-items: center;
+}
+.left-bar {
+    width: 464px;
+    height: 400px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-right: 1px solid #bdbdbd;
+}
+.right-bar {
+    width: 464px;
+    height: 400px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
