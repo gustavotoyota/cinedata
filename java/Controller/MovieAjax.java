@@ -54,7 +54,10 @@ public class MovieAjax extends HttpServlet {
         MovieSearchBean bean = new MovieSearchBean();
         CineDataDAO dao = new CineDataDAO();
         
-        ArrayList<String> directorList = new ArrayList<>(Arrays.asList(directors));
+        ArrayList<String> directorList = new ArrayList<>(Arrays.asList(directors));        
+        for (int i = directorList.size()-1; i >= 0; --i)
+            if ("".equals(directorList.get(i)))
+                directorList.remove(i);
         
         bean = dao.getMovieSearch(bean, pageIndex, title, directorList, language, matchAll);
         
